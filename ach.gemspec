@@ -13,6 +13,18 @@ Gem::Specification.new do |s|
 
   s.extra_rdoc_files = ['README.md']
 
+  # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
+  # delete this section to allow pushing this gem to any host.
+  if s.respond_to?(:metadata)
+    if ENV['GEM_ALLOWED_PUSH_HOST'] && !ENV['GEM_ALLOWED_PUSH_HOST'].strip.empty?
+      s.metadata['allowed_push_host'] = ENV['GEM_ALLOWED_PUSH_HOST']
+    else
+      raise 'You must set the GEM_ALLOWED_PUSH_HOST env var to the host (and optionally path) where this gem can be pushed.'
+    end
+  else
+    raise 'RubyGems 2.0 or newer is required to protect against public gem pushes.'
+  end
+
   s.files        = Dir.glob('lib/**/*') + %w{MIT-LICENSE README.md}
   s.test_files   = Dir.glob('examples/**/*')
   s.require_path = 'lib'

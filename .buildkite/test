@@ -1,3 +1,5 @@
 #!/bin/sh
 
+git config --global --add safe.directory /workdir
+
 bundle install && bundle exec rspec
