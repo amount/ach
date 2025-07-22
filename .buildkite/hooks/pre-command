@@ -1,0 +1,13 @@
+#!/bin/bash
+set -euo pipefail
+
+# Default to empty string if unset
+STEP_KEY="${BUILDKITE_STEP_KEY:-}"
+
+if [[ "$STEP_KEY" == "a3-package-and-upload" ]]; then
+  echo "Set A3 artifactory env vars to override the G1G2 globals"
+  # Override the Vault G1G2 Artifactory URL and creds for A3
+  export BUILDKITE_ARTIFACTORY_URL=${A3_ARTIFACTORY_URL}
+  export BUILDKITE_ARTIFACTORY_USER=${A3_ARTIFACTORY_USER}
+  export BUILDKITE_ARTIFACTORY_PASSWORD=${A3_ARTIFACTORY_PASSWORD}
+fi
